@@ -1,0 +1,11 @@
+#declare firstname and lastname variables
+first_name = "x"
+last_name = "y"
+#begin input
+first_name = input(str("What is your first name?"))
+last_name = input(str("What is your last name?"))
+#Capitalizes the first and last names :D
+first_name = first_name.capitalize()
+last_name = last_name.capitalize()
+#PRINT
+print ("Welcome to CompSci30, " + first_name + " " + last_name+"!")
