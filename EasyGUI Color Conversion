@@ -1,0 +1,58 @@
+import easygui
+
+#Sets the possible choices.
+choices1 = ["RGB->Hex", "Hex->RGB", "Binary->Decimal", "Decimal->Binary"]
+
+return_dict = {"HEX":0,"RGB":(0,0,0),"BIN":0,"DEC":0}
+
+def rgb_to_hex():
+    msg = "Enter the red, green, and blue values."
+    fieldNames = ["Red","Green","Blue"]
+    fieldValues = []
+    fieldValues = multenterbox(msg, fieldNames)
+    rgb_value = (Red, Green, Blue)
+    hex_code = '#{:02x}{:02x}{:02x}'.format(rgb[0], rgb[1], rgb[2])
+    return_dict["HEX"] = (hex_code)
+    
+def hex_to_rgb():
+    #Creates a window for the user to input their Hex code in
+    hex_color = easygui.enterbox("Enter your Hexideciaml code:")
+    # Remove the # symbol from the hexadecimal color code
+    hex_color = hex_color.lstrip("#")
+    # Convert the hexadecimal color code into decimal values for red, green, and blue
+    red = int(hex_color[0:2], 16)
+    green = int(hex_color[2:4], 16)
+    blue = int(hex_color[4:6], 16)
+    # Return the RGB values as a tuple
+    return_dict["RGB"] = (red, green, blue)
+
+def dec_to_bin():
+    decvalueinput = easygui.enterbox("Enter your Decimal code:")
+    binary_code = bin(decvalueinput)[2:]  # Remove the '0b' prefix
+    return_dict["BIN"] = (binary_code)
+
+def bin_to_dec():
+    binvalueinput = easygui.enterbox("Enter your Binary code:")
+    decimal_value = int(binvalueinput, 2)
+    return_dict["DEC"] = (decimal_value)
+
+#Asks the user what conversion type to use.
+user_choice = easygui.buttonbox("Please choose a conversion method:", choices=choices1)
+
+if user_choice == "RGB->Hex":
+    rgb_to_hex()
+    easygui.msgbox("Your Hex code is: ",return_dict["HEX"])
+
+if user_choice == "Hex->RGB":
+    hex_to_rgb()
+    easygui.msgbox("Your RGB code is: ",return_dict["RGB"])
+    
+if user_choice == "Dec->Bin":
+    dec_to_bin()
+    easygui.msgbox("Your Binary code is: ",return_dict["BIN"])
+    
+if user_choice == "Bin->Dec":
+    bin_to_dec()
+    easygui.msgbox("Your Decimal code is: ",return_dict["DEC"])
+
+
